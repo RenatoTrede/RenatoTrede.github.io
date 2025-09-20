@@ -67,19 +67,21 @@ label {
     gap: 1rem;
 }
 
-.options input[type="checkbox"], .options-col input[type="radio"] {
-    margin-right: 10px;
+/* --- INÍCIO DA CORREÇÃO --- */
+.option-item {
+    display: flex;
+    align-items: center; /* Alinha a caixa e o texto verticalmente */
+    gap: 10px;          /* Espaço entre a caixa e o texto */
 }
 
-.options input[type="checkbox"] + label,
-.options-col input[type="radio"] + label {
+.option-item label {
     font-weight: 400;
     font-size: 1rem;
-    display: inline-flex;
-    align-items: center;
     cursor: pointer;
-    margin-bottom: 0;
+    margin-bottom: 0; /* Remove a margem da label principal */
 }
+/* --- FIM DA CORREÇÃO --- */
+
 
 input[type="text"], textarea {
     width: 100%;
