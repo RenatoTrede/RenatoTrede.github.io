@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // IMPORTANTE: Cole a URL do seu script do Google Apps aqui
+    // IMPORTANTE: A sua URL já está correta aqui.
     const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzFzkgqHiDpeSWEQIdrQmEnQ4ItI_wcqBe7AOsV_9iHtIDsEAkQA83LlguaRkYQ8zkoTw/exec';
 
     const form = document.getElementById('survey-form');
@@ -19,11 +19,32 @@ document.addEventListener('DOMContentLoaded', () => {
             slide.classList.toggle('active-slide', index === currentSlide);
         });
 
-        backBtn.classList.toggle('hidden', currentSlide === 0);
-        submitBtn.classList.toggle('hidden', currentSlide !== totalSlides - 1);
-        nextBtn.classList.toggle('hidden', currentSlide === totalSlides - 1 || currentSlide === 0);
-
-        const progress = currentSlide === 0 ? 0 : ((currentSlide) / (totalSlides -1)) * 100;
+        // --- INÍCIO DA CORREÇÃO ---
+        // Lógica de navegação corrigida para mostrar/esconder botões
+        if (currentSlide === 0) {
+            // Tela de boas-vindas
+            backBtn.classList.add('hidden');
+            submitBtn.classList.add('hidden');
+            nextBtn.classList.remove('hidden');
+            nextBtn.textContent = 'Começar'; // Melhora a experiência do usuário
+        } else if (currentSlide === totalSlides - 1) {
+            // Última pergunta
+            backBtn.classList.remove('hidden');
+            submitBtn.classList.remove('hidden');
+            nextBtn.classList.add('hidden');
+        } else if (currentSlide >= totalSlides) {
+            // Tela de agradecimento (esconde tudo)
+            navigationDiv.classList.add('hidden');
+        } else {
+            // Telas de perguntas intermediárias
+            backBtn.classList.remove('hidden');
+            submitBtn.classList.add('hidden');
+            nextBtn.classList.remove('hidden');
+            nextBtn.textContent = 'Avançar';
+        }
+        // --- FIM DA CORREÇÃO ---
+        
+        const progress = currentSlide === 0 ? 0 : ((currentSlide) / (totalSlides - 1)) * 100;
         progressBar.style.width = `${progress}%`;
     }
 
@@ -48,7 +69,6 @@ document.addEventListener('DOMContentLoaded', () => {
         navigationDiv.classList.add('hidden');
 
         const formData = new FormData(form);
-        const data = {};
         
         // Coletar dados de checkboxes
         const checkboxes = form.querySelectorAll('input[type="checkbox"]:checked');
