@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pesquisa - IA para Pós-Graduandos</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <div id="survey-box">
+            <form id="survey-form">
+                <div class="question-slide active-slide" id="slide-0">
+                    <h1>Bem-vindo(a)!</h1>
+                    <p>Esta breve pesquisa nos ajudará a customizar a disciplina de IA para Pós-Graduandos para o seu dia a dia. Vamos começar?</p>
+                </div>
+
+                <div class="question-slide" id="slide-1">
+                    <h2>Seção 1: Sua Relação Atual com a IA</h2>
+                    <label>1. Quais ferramentas de IA você já utilizou ou utiliza com alguma frequência? (Pode marcar todas)</label>
+                    <div class="options">
+                        <input type="checkbox" name="ferramentas_uso" value="ChatGPT" id="q1_1"><label for="q1_1">ChatGPT (OpenAI)</label>
+                        <input type="checkbox" name="ferramentas_uso" value="Gemini" id="q1_2"><label for="q1_2">Gemini (Google)</label>
+                        <input type="checkbox" name="ferramentas_uso" value="Copilot" id="q1_3"><label for="q1_3">Copilot (Microsoft/Bing)</label>
+                        <input type="checkbox" name="ferramentas_uso" value="Nenhuma" id="q1_4"><label for="q1_4">Nenhuma das anteriores</label>
+                        <input type="text" name="ferramentas_uso_outra" placeholder="Outra(s)?">
+                    </div>
+                </div>
+
+                <div class="question-slide" id="slide-2">
+                    <label>2. No seu trabalho ou estudo, com que frequência você recorre a uma IA generativa?</label>
+                    <div class="options-col">
+                        <input type="radio" name="frequencia_ia" value="Diariamente" id="q2_1" required><label for="q2_1">Diariamente</label>
+                        <input type="radio" name="frequencia_ia" value="Semanalmente" id="q2_2"><label for="q2_2">Algumas vezes por semana</label>
+                        <input type="radio" name="frequencia_ia" value="Mensalmente" id="q2_3"><label for="q2_3">Algumas vezes por mês</label>
+                        <input type="radio" name="frequencia_ia" value="Raramente" id="q2_4"><label for="q2_4">Raramente ou nunca</label>
+                    </div>
+                </div>
+
+                <div class="question-slide" id="slide-3">
+                    <label>3. Você já ouviu falar em "Engenharia de Prompt"?</label>
+                     <div class="options-col">
+                        <input type="radio" name="eng_prompt" value="Sim, e pratico" id="q3_1" required><label for="q3_1">Sim, e pratico para obter melhores resultados.</label>
+                        <input type="radio" name="eng_prompt" value="Sim, mas nao sei aplicar" id="q3_2"><label for="q3_2">Sim, mas não sei bem como aplicar.</label>
+                        <input type="radio" name="eng_prompt" value="Nao, nunca ouvi" id="q3_3"><label for="q3_3">Não, nunca ouvi falar.</label>
+                    </div>
+                </div>
+
+                <div class="question-slide" id="slide-4">
+                     <label>4. Qual seu nível de conforto com a ideia de usar IA para gerar códigos de programação (ex: para análise estatística)?</label>
+                     <div class="options-col">
+                        <input type="radio" name="conforto_codigo" value="Muito confortavel" id="q4_1" required><label for="q4_1">Muito confortável, já faço ou faria sem problemas.</label>
+                        <input type="radio" name="conforto_codigo" value="Receoso" id="q4_2"><label for="q4_2">Um pouco receoso(a), mas curioso(a).</label>
+                        <input type="radio" name="conforto_codigo" value="Nada confortavel" id="q4_3"><label for="q4_3">Nada confortável, prefiro métodos tradicionais.</label>
+                        <input type="radio" name="conforto_codigo" value="Nao se aplica" id="q4_4"><label for="q4_4">Não se aplica à minha área.</label>
+                    </div>
+                </div>
+                
+                <div class="question-slide" id="slide-5">
+                    <h2>Seção 2: Seu Fluxo de Trabalho Acadêmico</h2>
+                    <label>5. Pensando na sua revisão de literatura, quais seus maiores desafios? (Marque até 2)</label>
+                    <div class="options">
+                        <input type="checkbox" name="desafio_literatura" value="Encontrar artigos" id="q5_1"><label for="q5_1">Encontrar os artigos mais relevantes.</label>
+                        <input type="checkbox" name="desafio_literatura" value="Resumir volume" id="q5_2"><label for="q5_2">Ler e resumir um grande volume de textos.</label>
+                        <input type="checkbox" name="desafio_literatura" value="Conexoes entre estudos" id="q5_3"><label for="q5_3">Entender as conexões entre diferentes estudos.</label>
+                        <input type="checkbox" name="desafio_literatura" value="Estado da arte" id="q5_4"><label for="q5_4">Identificar o "estado da arte" de um tema.</label>
+                    </div>
+                </div>
+                
+                <div class="question-slide" id="slide-6">
+                    <label>6. Que ferramentas você usa atualmente para ajudar na sua escrita?</label>
+                    <div class="options">
+                        <input type="checkbox" name="ferramentas_escrita" value="Apenas editor" id="q6_1"><label for="q6_1">Apenas o editor de texto (Word, Docs)</label>
+                        <input type="checkbox" name="ferramentas_escrita" value="Corretor gramatical" id="q6_2"><label for="q6_2">Corretor (Grammarly, etc.)</label>
+                        <input type="checkbox" name="ferramentas_escrita" value="Gerenciador de refs" id="q6_3"><label for="q6_3">Gerenciador de referências (Zotero, etc.)</label>
+                        <input type="checkbox" name="ferramentas_escrita" value="ChatGPT/Gemini" id="q6_4"><label for="q6_4">ChatGPT/Gemini para gerar/reescrever</label>
+                        <input type="text" name="ferramentas_escrita_outra" placeholder="Outra(s)?">
+                    </div>
+                </div>
+
+                <div class="question-slide" id="slide-7">
+                    <label>7. Como você costuma realizar análises estatísticas?</label>
+                    <div class="options-col">
+                        <input type="radio" name="analise_estatistica" value="Software com GUI" id="q7_1" required><label for="q7_1">Com softwares com interface gráfica (SPSS, etc.).</label>
+                        <input type="radio" name="analise_estatistica" value="Scripts proprios" id="q7_2"><label for="q7_2">Escrevo meus próprios scripts (R, Python, etc.).</label>
+                        <input type="radio" name="analise_estatistica" value="Ajuda externa" id="q7_3"><label for="q7_3">Peço ajuda a um colega ou estatístico.</label>
+                        <input type="radio" name="analise_estatistica" value="Nao se aplica" id="q7_4"><label for="q7_4">Minha pesquisa não envolve análise estatística.</label>
+                    </div>
+                </div>
+
+                <div class="question-slide" id="slide-8">
+                    <label>8. Quando precisa criar uma apresentação de slides, qual seu ponto de partida?</label>
+                    <div class="options-col">
+                        <input type="radio" name="ponto_partida_slides" value="PowerPoint/Slides" id="q8_1" required><label for="q8_1">Começo com um template em branco (PowerPoint, etc.)</label>
+                        <input type="radio" name="ponto_partida_slides" value="Canva" id="q8_2"><label for="q8_2">Utilizo o Canva</label>
+                        <input type="radio" name="ponto_partida_slides" value="Templates prontos" id="q8_3"><label for="q8_3">Utilizo templates prontos da internet/instituição</label>
+                        <input type="radio" name="ponto_partida_slides" value="Raramente crio" id="q8_4"><label for="q8_4">Raramente crio apresentações</label>
+                    </div>
+                </div>
+
+                <div class="question-slide" id="slide-9">
+                     <h2>Seção 3: Suas Expectativas</h2>
+                     <label>9. Das habilidades abaixo, qual traria o MAIOR impacto na sua produtividade HOJE? (Escolha apenas uma)</label>
+                    <div class="options-col">
+                        <input type="radio" name="maior_impacto" value="Automatizar literatura" id="q9_1" required><label for="q9_1">Automatizar a busca e o resumo de artigos</label>
+                        <input type="radio" name="maior_impacto" value="Aprimorar escrita" id="q9_2"><label for="q9_2">Usar IA para aprimorar a escrita acadêmica</label>
+                        <input type="radio" name="maior_impacto" value="Gerar codigos" id="q9_3"><label for="q9_3">Gerar códigos para análise de dados</label>
+                        <input type="radio" name="maior_impacto" value="Criar apresentacoes" id="q9_4"><label for="q9_4">Criar apresentações profissionais mais rápido</label>
+                        <input type="radio" name="maior_impacto" value="Gerar imagens" id="q9_5"><label for="q9_5">Gerar imagens de alta qualidade</label>
+                    </div>
+                </div>
+                
+                <div class="question-slide" id="slide-10">
+                    <label>10. Para finalizar, existe alguma tarefa repetitiva no seu dia a dia que você gostaria que a IA pudesse resolver?</label>
+                    <textarea name="tarefa_repetitiva" rows="4" placeholder="Descreva a tarefa aqui... (Opcional)"></textarea>
+                </div>
+
+                <div class="question-slide" id="thank-you-slide">
+                    <h2>Obrigado!</h2>
+                    <p>Suas respostas foram enviadas com sucesso. Elas serão fundamentais para a nossa disciplina.</p>
+                </div>
+
+            </form>
+            
+            <div id="navigation">
+                 <div id="progress-bar-container">
+                    <div id="progress-bar"></div>
+                </div>
+                <button id="back-btn" class="nav-btn">Voltar</button>
+                <button id="next-btn" class="nav-btn">Avançar</button>
+                <button type="submit" id="submit-btn" class="nav-btn" form="survey-form">Enviar</button>
+            </div>
+             <div id="loading" class="hidden">Enviando...</div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
