@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // IMPORTANTE: Cole a URL do seu script do Google Apps aqui
+    // IMPORTANTE: Mantenha a URL do seu script do Google Apps aqui
     const GOOGLE_SCRIPT_URL = 'URL_DO_SEU_SCRIPT_AQUI';
 
     const form = document.getElementById('survey-form');
@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const progressBar = document.getElementById('progress-bar');
     const loadingDiv = document.getElementById('loading');
     const navigationDiv = document.getElementById('navigation');
-    const errorDiv = document.getElementById('error-message'); // <-- NOVO: Pega a div de erro
+    const errorDiv = document.getElementById('error-message');
 
     let currentSlide = 0;
     const totalSlides = slides.length - 1; 
@@ -43,14 +43,25 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     nextBtn.addEventListener('click', () => {
-        // Validação para campo de nome obrigatório
         if (currentSlide === 1) {
             const nameInput = document.getElementById('nome_discente');
             if (nameInput.value.trim() === '') {
                 alert('Por favor, preencha seu nome para continuar.');
+                return;
+            }
+        }
+        
+        // --- NOVO: VALIDAÇÃO PARA PERGUNTA DE MARCAR ATÉ 2 ---
+        // O slide 6 é o da pergunta "Pensando na sua revisão de literatura..."
+        if (currentSlide === 6) { 
+            const checkedBoxes = document.querySelectorAll('input[name="desafio_literatura"]:checked');
+            if (checkedBoxes.length > 2) {
+                alert('Por favor, selecione no máximo 2 opções.');
                 return; // Impede de avançar
             }
         }
+        // --- FIM DA VALIDAÇÃO ---
+
         if (currentSlide < totalSlides - 1) {
             currentSlide++;
             updateNav();
@@ -67,7 +78,6 @@ document.addEventListener('DOMContentLoaded', () => {
     form.addEventListener('submit', (e) => {
         e.preventDefault();
         
-        // --- NOVO: Esconde a mensagem de erro antiga antes de um novo envio ---
         errorDiv.classList.add('hidden');
         
         loadingDiv.classList.remove('hidden');
@@ -102,15 +112,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 throw new Error(result.error || 'Erro desconhecido');
             }
         })
-        // --- NOVO: Lógica de erro aprimorada ---
         .catch(error => {
             console.error('Error:', error);
-            // Melhora da frase que você pediu e exibição na tela
             errorDiv.textContent = 'Ocorreu uma falha no envio. Por favor, verifique sua conexão e tente clicar em "Enviar" novamente.';
-            errorDiv.classList.remove('hidden'); // Mostra a div de erro
+            errorDiv.classList.remove('hidden');
             
-            loadingDiv.classList.add('hidden'); // Esconde o "Enviando..."
-            navigationDiv.classList.remove('hidden'); // Mostra os botões novamente para o usuário tentar de novo
+            loadingDiv.classList.add('hidden');
+            navigationDiv.classList.remove('hidden');
         });
     });
 
