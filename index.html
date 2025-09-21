@@ -17,13 +17,19 @@
                 <img src="logo.png" alt="Logo UFVJM">
                 <p class="instructor-name">Renato Trede</p>
             </div>
+
             <form id="survey-form">
                 <div class="question-slide active-slide" id="slide-0">
                     <h1>Bem-vindo(a)!</h1>
-                    <p>Esta breve pesquisa nos ajudará a customizar a disciplina de IA para Pós-Graduandos. Vamos começar?</p>
+                    <p>Esta breve pesquisa nos ajudará a customizar a disciplina de IA para Pós-Graduandos para o seu dia a dia. Vamos começar?</p>
                 </div>
-
+                
                 <div class="question-slide" id="slide-1">
+                    <h2>Identificação</h2>
+                    <label for="nome_discente">Por favor, digite seu nome:</label>
+                    <input type="text" id="nome_discente" name="nome_discente" placeholder="Seu nome completo" required>
+                </div>
+                <div class="question-slide" id="slide-2">
                     <h2>Seção 1: Sua Relação Atual com a IA</h2>
                     <label>1. Quais ferramentas de IA você já utilizou ou utiliza com alguma frequência? (Pode marcar todas)</label>
                     <div class="options">
@@ -43,7 +49,7 @@
                     </div>
                 </div>
 
-                <div class="question-slide" id="slide-2">
+                <div class="question-slide" id="slide-3">
                     <label>2. No seu trabalho ou estudo, com que frequência você recorre a uma IA generativa?</label>
                     <div class="options-col">
                         <div class="option-item">
@@ -61,7 +67,7 @@
                     </div>
                 </div>
 
-                <div class="question-slide" id="slide-3">
+                <div class="question-slide" id="slide-4">
                     <label>3. Você já ouviu falar em "Engenharia de Prompt"?</label>
                      <div class="options-col">
                         <div class="option-item">
@@ -76,7 +82,7 @@
                     </div>
                 </div>
 
-                <div class="question-slide" id="slide-4">
+                <div class="question-slide" id="slide-5">
                      <label>4. Qual seu nível de conforto com a ideia de usar IA para gerar códigos de programação (ex: para análise estatística)?</label>
                      <div class="options-col">
                         <div class="option-item">
@@ -94,7 +100,7 @@
                     </div>
                 </div>
                 
-                <div class="question-slide" id="slide-5">
+                <div class="question-slide" id="slide-6">
                     <h2>Seção 2: Seu Fluxo de Trabalho Acadêmico</h2>
                     <label>5. Pensando na sua revisão de literatura, quais seus maiores desafios? (Marque até 2)</label>
                     <div class="options">
@@ -113,7 +119,7 @@
                     </div>
                 </div>
                 
-                <div class="question-slide" id="slide-6">
+                <div class="question-slide" id="slide-7">
                     <label>6. Que ferramentas você usa atualmente para ajudar na sua escrita?</label>
                     <div class="options">
                         <div class="option-item">
@@ -132,7 +138,7 @@
                     </div>
                 </div>
 
-                <div class="question-slide" id="slide-7">
+                <div class="question-slide" id="slide-8">
                     <label>7. Como você costuma realizar análises estatísticas?</label>
                     <div class="options-col">
                         <div class="option-item">
@@ -150,7 +156,7 @@
                     </div>
                 </div>
 
-                <div class="question-slide" id="slide-8">
+                <div class="question-slide" id="slide-9">
                     <label>8. Quando precisa criar uma apresentação de slides, qual seu ponto de partida?</label>
                     <div class="options-col">
                         <div class="option-item">
@@ -168,7 +174,7 @@
                     </div>
                 </div>
 
-                <div class="question-slide" id="slide-9">
+                <div class="question-slide" id="slide-10">
                      <h2>Seção 3: Suas Expectativas</h2>
                      <label>9. Das habilidades abaixo, qual traria o MAIOR impacto na sua produtividade HOJE? (Escolha apenas uma)</label>
                     <div class="options-col">
@@ -190,7 +196,7 @@
                     </div>
                 </div>
                 
-                <div class="question-slide" id="slide-10">
+                <div class="question-slide" id="slide-11">
                     <label>10. Para finalizar, existe alguma tarefa repetitiva no seu dia a dia que você gostaria que a IA pudesse resolver?</label>
                     <textarea name="tarefa_repetitiva" rows="4" placeholder="Descreva a tarefa aqui... (Opcional)"></textarea>
                 </div>
@@ -211,9 +217,9 @@
                 <button type="submit" id="submit-btn" class="nav-btn" form="survey-form">Enviar</button>
             </div>
              <div id="loading" class="hidden">Enviando...</div>
-        </div>
+             <div id="error-message" class="hidden"></div>
+             </div>
     </div>
     <script src="script.js"></script>
 </body>
 </html>
-
