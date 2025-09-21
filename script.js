@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     // IMPORTANTE: Mantenha a URL do seu script do Google Apps aqui
-    const GOOGLE_SCRIPT_URL = 'URL_DO_SEU_SCRIPT_AQUI';
+    const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzFzkgqHiDpeSWEQIdrQmEnQ4ItI_wcqBe7AOsV_9iHtIDsEAkQA83LlguaRkYQ8zkoTw/exec';
 
     const form = document.getElementById('survey-form');
     const slides = document.querySelectorAll('.question-slide');
@@ -125,3 +125,4 @@ document.addEventListener('DOMContentLoaded', () => {
     // Inicializa a navegação
     updateNav();
 });
+
