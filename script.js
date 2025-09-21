@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // IMPORTANTE: A sua URL já está correta aqui.
-    const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzFzkgqHiDpeSWEQIdrQmEnQ4ItI_wcqBe7AOsV_9iHtIDsEAkQA83LlguaRkYQ8zkoTw/exec';
+    // IMPORTANTE: Cole a URL do seu script do Google Apps aqui
+    const GOOGLE_SCRIPT_URL = 'URL_DO_SEU_SCRIPT_AQUI';
 
     const form = document.getElementById('survey-form');
     const slides = document.querySelectorAll('.question-slide');
@@ -10,45 +10,47 @@ document.addEventListener('DOMContentLoaded', () => {
     const progressBar = document.getElementById('progress-bar');
     const loadingDiv = document.getElementById('loading');
     const navigationDiv = document.getElementById('navigation');
+    const errorDiv = document.getElementById('error-message'); // <-- NOVO: Pega a div de erro
 
     let currentSlide = 0;
-    const totalSlides = slides.length - 1; // Exclui a tela de agradecimento
+    const totalSlides = slides.length - 1; 
 
     function updateNav() {
         slides.forEach((slide, index) => {
             slide.classList.toggle('active-slide', index === currentSlide);
         });
 
-        // --- INÍCIO DA CORREÇÃO ---
-        // Lógica de navegação corrigida para mostrar/esconder botões
         if (currentSlide === 0) {
-            // Tela de boas-vindas
             backBtn.classList.add('hidden');
             submitBtn.classList.add('hidden');
             nextBtn.classList.remove('hidden');
-            nextBtn.textContent = 'Começar'; // Melhora a experiência do usuário
+            nextBtn.textContent = 'Começar';
         } else if (currentSlide === totalSlides - 1) {
-            // Última pergunta
             backBtn.classList.remove('hidden');
             submitBtn.classList.remove('hidden');
             nextBtn.classList.add('hidden');
         } else if (currentSlide >= totalSlides) {
-            // Tela de agradecimento (esconde tudo)
             navigationDiv.classList.add('hidden');
         } else {
-            // Telas de perguntas intermediárias
             backBtn.classList.remove('hidden');
             submitBtn.classList.add('hidden');
             nextBtn.classList.remove('hidden');
             nextBtn.textContent = 'Avançar';
         }
-        // --- FIM DA CORREÇÃO ---
         
         const progress = currentSlide === 0 ? 0 : ((currentSlide) / (totalSlides - 1)) * 100;
         progressBar.style.width = `${progress}%`;
     }
 
     nextBtn.addEventListener('click', () => {
+        // Validação para campo de nome obrigatório
+        if (currentSlide === 1) {
+            const nameInput = document.getElementById('nome_discente');
+            if (nameInput.value.trim() === '') {
+                alert('Por favor, preencha seu nome para continuar.');
+                return; // Impede de avançar
+            }
+        }
         if (currentSlide < totalSlides - 1) {
             currentSlide++;
             updateNav();
@@ -65,12 +67,14 @@ document.addEventListener('DOMContentLoaded', () => {
     form.addEventListener('submit', (e) => {
         e.preventDefault();
         
+        // --- NOVO: Esconde a mensagem de erro antiga antes de um novo envio ---
+        errorDiv.classList.add('hidden');
+        
         loadingDiv.classList.remove('hidden');
         navigationDiv.classList.add('hidden');
 
         const formData = new FormData(form);
         
-        // Coletar dados de checkboxes
         const checkboxes = form.querySelectorAll('input[type="checkbox"]:checked');
         const checkboxData = {};
         checkboxes.forEach(cb => {
@@ -80,7 +84,6 @@ document.addEventListener('DOMContentLoaded', () => {
             checkboxData[cb.name].push(cb.value);
         });
 
-        // Juntar dados de checkboxes com o resto
         for (let key in checkboxData) {
             formData.append(key, checkboxData[key].join(', '));
         }
@@ -92,18 +95,22 @@ document.addEventListener('DOMContentLoaded', () => {
         .then(response => response.json())
         .then(result => {
             if(result.result === "success"){
-                currentSlide = totalSlides; // Vai para a tela de agradecimento
+                currentSlide = totalSlides;
                 updateNav();
                 loadingDiv.classList.add('hidden');
             } else {
                 throw new Error(result.error || 'Erro desconhecido');
             }
         })
+        // --- NOVO: Lógica de erro aprimorada ---
         .catch(error => {
             console.error('Error:', error);
-            alert('Ocorreu um erro ao enviar suas respostas. Por favor, tente novamente.');
-            loadingDiv.classList.add('hidden');
-            navigationDiv.classList.remove('hidden');
+            // Melhora da frase que você pediu e exibição na tela
+            errorDiv.textContent = 'Ocorreu uma falha no envio. Por favor, verifique sua conexão e tente clicar em "Enviar" novamente.';
+            errorDiv.classList.remove('hidden'); // Mostra a div de erro
+            
+            loadingDiv.classList.add('hidden'); // Esconde o "Enviando..."
+            navigationDiv.classList.remove('hidden'); // Mostra os botões novamente para o usuário tentar de novo
         });
     });
 
