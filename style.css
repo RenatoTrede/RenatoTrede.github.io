@@ -45,12 +45,10 @@ body {
     margin-bottom: 1.5rem;
 }
 
-/* --- AQUI ESTÁ A CORREÇÃO --- */
 .survey-header img {
-    height: 45px; /* Alterado de max-height para height */
-    width: auto;  /* Adicionado para manter a proporção */
+    height: 45px;
+    width: auto;
 }
-/* -------------------------- */
 
 .survey-header .instructor-name {
     font-size: 1.1rem;
@@ -181,3 +179,15 @@ input[type="text"]:focus, textarea:focus {
 #thank-you-slide p {
     font-size: 1.2rem;
 }
+
+/* ===== NOVO ESTILO PARA MENSAGEM DE ERRO ===== */
+#error-message {
+    color: #721c24; /* Tom de vermelho escuro */
+    background-color: #f8d7da; /* Fundo rosa claro */
+    border: 1px solid #f5c6cb;
+    border-radius: 8px;
+    padding: 1rem;
+    margin-top: 1.5rem;
+    text-align: center;
+}
+/* ============================================= */
