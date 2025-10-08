@@ -315,4 +315,5 @@ document.addEventListener('DOMContentLoaded', () => {
             submittingText.textContent = 'Erro ao salvar o resultado. Tente novamente.';
         });
     }
+
 });
