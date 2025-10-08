@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 "São sinônimos para a mesma tecnologia, mas usados em contextos diferentes.",
                 "IA é a teoria, ML é a aplicação prática e DL é a análise de dados."
             ],
-            correct: 1, // Índice da resposta correta (começa em 0)
+            correct: 1,
             feedback: [
                 "Incorreto. Esta opção contradiz a ideia de hierarquia apresentada no texto, que mostra uma relação de inclusão entre os campos.",
                 "Correto! Esta analogia representa perfeitamente a relação hierárquica e de subconjunto descrita no documento.",
@@ -151,7 +151,7 @@ document.addEventListener('DOMContentLoaded', () => {
             ]
         },
         {
-            question: "Um pesquisador que descreve detalhadamente o estilo de escrita e a estrutura desejada para um resumo que pede a um LLM está aplicando principalmente qual conceito?",
+            question: "Um pesquisador que descreve detalhadamente o estilo de escrita, o público-alvo e a estrutura desejada para um resumo que pede a um LLM está aplicando principalmente qual conceito?",
             options: [
                 "Deep Learning",
                 "Vibe Coding",
@@ -170,13 +170,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- PASSO 3: LÓGICA DO QUIZ (não precisa mexer aqui) ---
     
-    // Variáveis de estado
     let currentQuestionIndex = 0;
     let score = 0;
     let studentName = '';
     let answerSelected = false;
 
-    // Elementos da página
     const nameScreen = document.getElementById('name-screen');
     const quizScreen = document.getElementById('quiz-screen');
     const resultScreen = document.getElementById('result-screen');
@@ -191,7 +189,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const feedbackArea = document.getElementById('feedback-area');
     const nextQuestionBtn = document.getElementById('next-question-btn');
 
-    // Iniciar o quiz após preencher o nome
     nameForm.addEventListener('submit', (e) => {
         e.preventDefault();
         studentName = nameInput.value.trim();
@@ -202,17 +199,14 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Carregar uma questão
     function loadQuestion() {
         answerSelected = false;
         feedbackArea.innerHTML = '';
         feedbackArea.className = 'hidden';
         nextQuestionBtn.classList.add('hidden');
-
         const currentQuestion = quizData[currentQuestionIndex];
         questionText.textContent = currentQuestion.question;
         answerOptions.innerHTML = '';
-        
         currentQuestion.options.forEach((option, index) => {
             const button = document.createElement('button');
             button.className = 'option-btn';
@@ -221,21 +215,16 @@ document.addEventListener('DOMContentLoaded', () => {
             button.addEventListener('click', selectAnswer);
             answerOptions.appendChild(button);
         });
-        
         updateHeader();
     }
 
-    // Processar a seleção de uma resposta
     function selectAnswer(e) {
         if (answerSelected) return;
         answerSelected = true;
-
         const selectedButton = e.target;
         const selectedIndex = parseInt(selectedButton.dataset.index);
         const currentQuestion = quizData[currentQuestionIndex];
-        
         const isCorrect = selectedIndex === currentQuestion.correct;
-        
         if (isCorrect) {
             score++;
             selectedButton.classList.add('correct');
@@ -244,29 +233,23 @@ document.addEventListener('DOMContentLoaded', () => {
             selectedButton.classList.add('incorrect');
             feedbackArea.className = 'feedback-area incorrect';
         }
-        
         feedbackArea.innerHTML = currentQuestion.feedback[selectedIndex];
-
-        // Desabilitar todos os botões e destacar o correto
         Array.from(answerOptions.children).forEach((button, index) => {
             button.disabled = true;
             if (index === currentQuestion.correct) {
                 button.classList.add('correct');
             }
         });
-
         nextQuestionBtn.classList.remove('hidden');
         updateHeader();
     }
     
-    // Atualizar cabeçalho e barra de progresso
     function updateHeader() {
         questionCounter.textContent = `Pergunta ${currentQuestionIndex + 1} de ${quizData.length}`;
         scoreCounter.textContent = `Pontuação: ${score}`;
         progressBar.style.width = `${((currentQuestionIndex) / quizData.length) * 100}%`;
     }
 
-    // Ir para a próxima questão ou finalizar
     nextQuestionBtn.addEventListener('click', () => {
         currentQuestionIndex++;
         if (currentQuestionIndex < quizData.length) {
@@ -276,27 +259,24 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
     
-    // Mostrar resultados finais
     function showResults() {
         quizScreen.classList.remove('active-screen');
         resultScreen.classList.add('active-screen');
-        
         const percentage = Math.round((score / quizData.length) * 100);
-        
         document.getElementById('result-text').textContent = `${studentName}, sua pontuação final é:`;
         document.getElementById('final-score').textContent = `${score} de ${quizData.length} (${percentage}%)`;
-        
         submitScore();
     }
     
-    // Enviar pontuação para a planilha
     function submitScore() {
         const submittingText = document.getElementById('submitting-text');
         submittingText.classList.remove('hidden');
 
         const formData = new FormData();
+        const percentage = Math.round((score / quizData.length) * 100);
+        
         formData.append('nome', studentName);
-        formData.append('pontuacao', `${score} de ${quizData.length}`);
+        formData.append('pontuacao', percentage);
 
         fetch(GOOGLE_SCRIPT_URL, {
             method: 'POST',
@@ -315,5 +295,4 @@ document.addEventListener('DOMContentLoaded', () => {
             submittingText.textContent = 'Erro ao salvar o resultado. Tente novamente.';
         });
     }
-
 });
