@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz - Conceitos de IA</title>
+    <link rel="stylesheet" href="quiz-style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <div id="quiz-box">
+            <div id="name-screen" class="screen active-screen">
+                <div class="survey-header">
+                    <img src="logo.png" alt="Logo UFVJM">
+                    <p class="instructor-name">Renato Trede</p>
+                </div>
+                <h1>Quiz: Conceitos de IA</h1>
+                <p>Antes de começar, por favor, identifique-se.</p>
+                <form id="name-form">
+                    <label for="nome_discente">Seu nome completo:</label>
+                    <input type="text" id="nome_discente" name="nome_discente" placeholder="Digite seu nome aqui..." required>
+                    <button type="submit" class="nav-btn">Começar Quiz</button>
+                </form>
+            </div>
+
+            <div id="quiz-screen" class="screen">
+                <div id="quiz-header">
+                    <p id="question-counter"></p>
+                    <p id="score-counter"></p>
+                </div>
+                <div id="progress-bar-container"><div id="progress-bar"></div></div>
+                <h2 id="question-text"></h2>
+                <div id="answer-options"></div>
+                <div id="feedback-area"></div>
+                <button id="next-question-btn" class="nav-btn hidden">Próxima Pergunta</button>
+            </div>
+
+            <div id="result-screen" class="screen">
+                <h1>Quiz Finalizado!</h1>
+                <p id="result-text"></p>
+                <div id="final-score"></div>
+                <p id="submitting-text" class="hidden">Salvando seu resultado...</p>
+            </div>
+        </div>
+    </div>
+    <script src="quiz-script.js"></script>
+</body>
+</html>
