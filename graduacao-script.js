@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     
     // --- COLE A NOVA URL DO SEU SCRIPT DO GOOGLE AQUI ---
-    const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbw9gJzdfWiF6EbVX0qynI-jDcOJ03o3VvfLioV-T0b2vbMInujv0yMOIWQA3iyrCbBo/exec';
+    const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwisQ6ziOrYlJ_G1WIPhejBG4YQfia0ecUb-SIhRnD1nLdlIodAhflHug22d6KETPKg/exec';
 
     const form = document.getElementById('survey-form');
     const slides = document.querySelectorAll('.question-slide');
@@ -73,7 +73,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const formData = new FormData(form);
         
-        // Coleta dados de checkboxes
         const checkboxes = form.querySelectorAll('input[type="checkbox"]:checked');
         const checkboxData = {};
         checkboxes.forEach(cb => {
