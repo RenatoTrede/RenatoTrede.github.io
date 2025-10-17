@@ -35,6 +35,30 @@ body {
     position: relative;
 }
 
+.survey-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+/* --- AQUI ESTÁ A CORREÇÃO PARA O LOGO --- */
+.survey-header img {
+    height: 45px;
+    width: auto;
+}
+/* -------------------------------------- */
+
+.survey-header .instructor-name {
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: #555;
+    margin: 0;
+}
+
+
 .question-slide {
     display: none;
     animation: fadeIn 0.5s ease-in-out;
