@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pesquisa - IA na Graduação</title>
+    <link rel="stylesheet" href="graduacao-style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <div id="survey-box">
+            <div class="survey-header">
+                <img src="logo.png" alt="Logo UFVJM">
+                <p class="instructor-name">Renato Trede</p>
+            </div>
+
+            <form id="survey-form">
+                <!-- Tela 0: Boas-vindas -->
+                <div class="question-slide active-slide">
+                    <h1>Bem-vindo(a)!</h1>
+                    <p>Esta breve pesquisa nos ajudará a customizar a disciplina de IA para o seu dia a dia na graduação. Vamos começar?</p>
+                </div>
+                
+                <!-- Tela 1: Nome -->
+                <div class="question-slide">
+                    <h2>Identificação</h2>
+                    <label for="nome_discente">Por favor, digite seu nome:</label>
+                    <input type="text" id="nome_discente" name="nome_discente" placeholder="Seu nome completo" required>
+                </div>
+                
+                <!-- Seção 1: Sua Relação Atual com a IA -->
+                <div class="question-slide">
+                    <h2>Seção 1: Sua Relação Atual com a IA</h2>
+                    <label>1. Quais ferramentas de IA você mais utiliza? (Pode marcar quantas desejar)</label>
+                    <div class="options">
+                        <div class="option-item"><input type="checkbox" name="ferramentas_uso" value="ChatGPT" id="q1_1"><label for="q1_1">ChatGPT (da OpenAI)</label></div>
+                        <div class="option-item"><input type="checkbox" name="ferramentas_uso" value="Gemini" id="q1_2"><label for="q1_2">Gemini (do Google)</label></div>
+                        <div class="option-item"><input type="checkbox" name="ferramentas_uso" value="Copilot" id="q1_3"><label for="q1_3">Copilot (da Microsoft/Bing)</label></div>
+                        <div class="option-item"><input type="checkbox" name="ferramentas_uso" value="Gerador de Imagem" id="q1_4"><label for="q1_4">Ferramentas de geração de imagem (Midjourney, DALL-E, etc.)</label></div>
+                        <div class="option-item"><input type="checkbox" name="ferramentas_uso" value="Nenhuma" id="q1_5"><label for="q1_5">Nenhuma das anteriores</label></div>
+                        <input type="text" name="ferramentas_uso_outra" placeholder="Outra(s)?">
+                    </div>
+                </div>
+
+                <div class="question-slide">
+                    <label>2. Com que frequência você usa uma IA para te ajudar nos estudos ou trabalhos da faculdade?</label>
+                    <div class="options-col">
+                        <div class="option-item"><input type="radio" name="frequencia_ia" value="Varias vezes ao dia" id="q2_1" required><label for="q2_1">Várias vezes ao dia</label></div>
+                        <div class="option-item"><input type="radio" name="frequencia_ia" value="Pelo menos uma vez ao dia" id="q2_2"><label for="q2_2">Pelo menos uma vez por dia</label></div>
+                        <div class="option-item"><input type="radio" name="frequencia_ia" value="Algumas vezes por semana" id="q2_3"><label for="q2_3">Algumas vezes por semana</label></div>
+                        <div class="option-item"><input type="radio" name="frequencia_ia" value="Apenas em epoca de provas" id="q2_4"><label for="q2_4">Apenas em épocas de trabalhos e provas</label></div>
+                        <div class="option-item"><input type="radio" name="frequencia_ia" value="Raramente ou nunca" id="q2_5"><label for="q2_5">Raramente ou nunca</label></div>
+                    </div>
+                </div>
+
+                <div class="question-slide">
+                    <label>3. Você já ouviu falar em "Engenharia de Prompt"?</label>
+                     <div class="options-col">
+                        <div class="option-item"><input type="radio" name="eng_prompt" value="Sim, e tento aplicar" id="q3_1" required><label for="q3_1">Sim, e tento aplicar para ter respostas melhores.</label></div>
+                        <div class="option-item"><input type="radio" name="eng_prompt" value="Sim, mas nao sei bem" id="q3_2"><label for="q3_2">Sim, mas não sei muito bem o que significa na prática.</label></div>
+                        <div class="option-item"><input type="radio" name="eng_prompt" value="Nao, nunca ouvi" id="q3_3"><label for="q3_3">Não, nunca ouvi falar.</label></div>
+                    </div>
+                </div>
+                
+                <div class="question-slide">
+                    <label>4. Como você classificaria sua habilidade em obter bons resultados de uma IA?</label>
+                    <div class="options-col">
+                       <div class="option-item"><input type="radio" name="habilidade_resultados" value="Avancado" id="q4_1" required><label for="q4_1"><b>Avançado:</b> Consigo resultados ótimos e sei refinar meus pedidos.</label></div>
+                       <div class="option-item"><input type="radio" name="habilidade_resultados" value="Intermediario" id="q4_2"><label for="q4_2"><b>Intermediário:</b> Às vezes acerto, às vezes erro, mas consigo me virar.</label></div>
+                       <div class="option-item"><input type="radio" name="habilidade_resultados" value="Iniciante" id="q4_3"><label for="q4_3"><b>Iniciante:</b> Geralmente pego a primeira resposta que a IA me dá.</label></div>
+                   </div>
+               </div>
+
+                <!-- Seção 2: Uso no Dia a Dia Acadêmico -->
+                <div class="question-slide">
+                    <h2>Seção 2: O Uso da IA no Dia a Dia Acadêmico</h2>
+                    <label>5. Para quais das seguintes tarefas acadêmicas você JÁ USOU Inteligência Artificial? (Marque todas)</label>
+                    <div class="options">
+                        <div class="option-item"><input type="checkbox" name="tarefas_uso_ia" value="Ideias para trabalhos" id="q5_1"><label for="q5_1">Para ter ideias ou pesquisar temas para um trabalho.</label></div>
+                        <div class="option-item"><input type="checkbox" name="tarefas_uso_ia" value="Escrever/Corrigir trabalhos" id="q5_2"><label for="q5_2">Para escrever, reescrever ou corrigir trechos de trabalhos.</label></div>
+                        <div class="option-item"><input type="checkbox" name="tarefas_uso_ia" value="Criar slides" id="q5_3"><label for="q5_3">Para criar a estrutura ou o conteúdo de apresentações de slides.</label></div>
+                        <div class="option-item"><input type="checkbox" name="tarefas_uso_ia" value="Resumir textos" id="q5_4"><label for="q5_4">Para resumir textos, artigos ou capítulos de livros para estudar.</label></div>
+                        <div class="option-item"><input type="checkbox" name="tarefas_uso_ia" value="Ajuda no TCC" id="q5_5"><label for="q5_5">Para ajudar na estrutura ou escrita do TCC.</label></div>
+                        <div class="option-item"><input type="checkbox" name="tarefas_uso_ia" value="Gerar imagens" id="q5_6"><label for="q5_6">Para gerar imagens para trabalhos ou posts de redes sociais.</label></div>
+                        <div class="option-item"><input type="checkbox" name="tarefas_uso_ia" value="Criar fichas/formularios" id="q5_7"><label for="q5_7">Para criar ou preencher fichas e formulários (ex: avaliação de pacientes).</label></div>
+                        <div class="option-item"><input type="checkbox" name="tarefas_uso_ia" value="Tirar duvidas/Conferir" id="q5_8"><label for="q5_8">Para tirar dúvidas ou "conferir" informações e procedimentos da minha área.</label></div>
+                    </div>
+                </div>
+
+                <div class="question-slide">
+                    <label>6. Em qual dessas tarefas você sente que a IA te dá mais "trabalho" ou resultados de baixa qualidade?</label>
+                    <textarea name="tarefas_dificuldade" rows="4" placeholder="Descreva a tarefa e a dificuldade aqui... (Opcional)"></textarea>
+                </div>
+                
+                <!-- Seção 3: O que Você Mais Quer Aprender? -->
+                <div class="question-slide">
+                    <h2>Seção 3: O que Você Mais Quer Aprender?</h2>
+                    <label>7. Qual das habilidades abaixo teria o MAIOR impacto positivo nos seus estudos HOJE? (Escolha apenas uma)</label>
+                   <div class="options-col">
+                       <div class="option-item"><input type="radio" name="maior_impacto" value="Pesquisar de forma confiavel" id="q7_1" required><label for="q7_1">Aprender a usar IA para pesquisar de forma mais rápida e confiável (sem "alucinações").</label></div>
+                       <div class="option-item"><input type="radio" name="maior_impacto" value="Dominar Engenharia de Prompt" id="q7_2"><label for="q7_2">Dominar a "Engenharia de Prompt" para obter respostas de alta qualidade para qualquer tarefa.</label></div>
+                       <div class="option-item"><input type="radio" name="maior_impacto" value="Criar apresentacoes" id="q7_3"><label for="q7_3">Aprender a criar apresentações de slides incríveis em poucos minutos.</label></div>
+                       <div class="option-item"><input type="radio" name="maior_impacto" value="Usar IA no TCC" id="q7_4"><label for="q7_4">Usar IA de forma estratégica para organizar e acelerar a escrita do meu TCC.</label></div>
+                       <div class="option-item"><input type="radio" name="maior_impacto" value="Entender uso etico" id="q7_5"><label for="q7_5">Entender como usar a IA de forma ética, evitando o plágio e mantendo a autoria dos meus trabalhos.</label></div>
+                   </div>
+               </div>
+               
+               <div class="question-slide">
+                   <label>8. Além do que já foi perguntado, existe alguma tarefa específica da sua rotina de estudante que você gostaria que a IA pudesse resolver?</label>
+                   <textarea name="sugestoes_tarefas" rows="4" placeholder="Descreva a tarefa aqui... (Opcional)"></textarea>
+               </div>
+
+                <!-- Tela Final -->
+                <div class="question-slide">
+                    <h2>Obrigado!</h2>
+                    <p>Suas respostas foram enviadas com sucesso. Elas serão fundamentais para a nossa disciplina.</p>
+                </div>
+            </form>
+            
+            <div id="navigation">
+                 <div id="progress-bar-container"><div id="progress-bar"></div></div>
+                <button id="back-btn" class="nav-btn">Voltar</button>
+                <button id="next-btn" class="nav-btn">Avançar</button>
+                <button type="submit" id="submit-btn" class="nav-btn" form="survey-form">Enviar</button>
+            </div>
+             <div id="loading" class="hidden">Enviando...</div>
+             <div id="error-message" class="hidden"></div>
+        </div>
+    </div>
+    <script src="graduacao-script.js"></script>
+</body>
+</html>
