@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback da Disciplina - IA para Pós-Graduandos</title>
+    <link rel="stylesheet" href="feedback-style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <div id="feedback-box">
+            <div id="form-screen" class="screen active-screen">
+                <div class="survey-header">
+                    <img src="logo.png" alt="Logo UFVJM">
+                    <p class="instructor-name">Renato Trede</p>
+                </div>
+                <h1>Feedback da Disciplina</h1>
+                <p>Sua opinião é anônima e muito importante para aprimorarmos as próximas turmas. Por favor, seja honesto(a) e detalhista.</p>
+                
+                <form id="feedback-form">
+                    <label class="question-label">1. De modo geral, como você avalia a disciplina?</label>
+                    <div class="star-rating">
+                        <input type="radio" id="star5" name="avaliacao" value="5" required/><label for="star5" title="Excelente"></label>
+                        <input type="radio" id="star4" name="avaliacao" value="4" /><label for="star4" title="Muito Bom"></label>
+                        <input type="radio" id="star3" name="avaliacao" value="3" /><label for="star3" title="Bom"></label>
+                        <input type="radio" id="star2" name="avaliacao" value="2" /><label for="star2" title="Regular"></label>
+                        <input type="radio" id="star1" name="avaliacao" value="1" /><label for="star1" title="Ruim"></label>
+                    </div>
+
+                    <label for="sugestoes" class="question-label">2. Que dicas, sugestões ou críticas construtivas você daria para as próximas edições da disciplina?</label>
+                    <textarea id="sugestoes" name="sugestoes" rows="5" placeholder="Pode falar sobre o conteúdo, a duração, as atividades, o que mais gostou, o que faltou..." required></textarea>
+
+                    <button type="submit" class="nav-btn">Enviar Feedback</button>
+                    <div id="status-message" class="hidden"></div>
+                </form>
+            </div>
+            
+            <div id="thank-you-screen" class="screen">
+                <h1>Obrigado!</h1>
+                <p>Seu feedback foi enviado com sucesso. Sua contribuição é fundamental para o futuro desta disciplina.</p>
+            </div>
+        </div>
+    </div>
+    <script src="feedback-script.js"></script>
+</body>
+</html>
